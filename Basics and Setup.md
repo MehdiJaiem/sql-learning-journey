@@ -1,0 +1,51 @@
+# Practical part
+
+This document outlines the steps and exercises I've undertaken in my journey to learn SQL.
+
+## Initial Setup
+
+- Installed MySQL Server and MySQL Workbench.
+- Created a GitHub repository to track my SQL scripts and learning progress.
+
+## SQL Basics
+
+- Created my first database named `testdb`.
+  
+  ```sql
+  CREATE DATABASE testdb;
+  ```
+- Created a table called employees to store employee records.
+
+```sql
+CREATE TABLE IF NOT EXISTS employees (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    name VARCHAR(100),
+    position VARCHAR(100),
+    salary DECIMAL(10,2),
+    hired_date DATE
+);
+-- Inserted a record into the employees table.
+INSERT INTO employees (name, position, salary, hired_date)
+VALUES ('John Doe', 'Software Engineer', 60000, '2021-01-15');
+
+-- Retrieved all records from the employees table.
+SELECT * FROM employees;
+
+-- Retrieved records for employees with the position 'Software Engineer'.
+SELECT * FROM employees WHERE position = 'Software Engineer';
+
+```
+## Handling Errors
+Encountered an issue with duplicate entries and learned about UNIQUE constraints.
+The problem can be solved in various ways. Yet the easiest way to do is to proceed as follow
+
+```sql
+CREATE TABLE IF NOT EXISTS employees (
+previous entries
+-- Solving the issue
+UNIQUE(name, hired_date)
+);
+```
+There are other ways to solve this problem but this would require advanced knowledge.
+
+
