@@ -46,6 +46,6 @@ previous entries
 UNIQUE(name, hired_date)
 );
 ```
-There are other ways to solve this problem but this would require advanced knowledge.
+There are other ways to solve this problem but this would require advanced knowledge. The proposed solution requires yet to delete the actual table and re-run the query. If the table was created without the UNIQUE constraint initially and you added it later, any existing duplicate entries from before the constraint was added would not be automatically removed. You'd need to manually delete the duplicate entries before adding the constraint, or drop and recreate the table with the constraint in place.
 
 
