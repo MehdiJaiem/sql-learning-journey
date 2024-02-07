@@ -60,3 +60,55 @@ SELECT name, position FROM employees_2 ORDER BY salary DESC;
 -- FILTERING DATA
 SELECT * from employees_2 WHERE salary > 55000;
 SELECT * FROM employees_2 WHERE YEAR(hired_date)=2021;
+
+-- UPDATE EMPLOYEES RECORD
+
+-- Increase the salary of a specific employee by a certain percentage (e.g., a 10% raise).
+UPDATE employees_2 SET salary = salary + (0.1*salary) WHERE name='Wassim';
+SELECT name,salary FROM employees_2;
+-- Change the position of an employee to a new one (e.g., from 'Software Engineer' to 'Senior Software Engineer')
+UPDATE employees_2 SET position = 'Senior Software Dev' WHERE position = 'Pepe Onzima';
+SELECT position FROM employees_2;
+
+-- DELETE RECORDS
+-- Delete an employee who has left the company. Make sure to choose an ID that exists in your table.
+
+DELETE FROM employees_2 WHERE employee_id=2;
+SELECT * FROM employees_2;
+
+INSERT INTO employees_2
+VALUES
+    (NULL, 'John Bridge', 'Software Engineer', 50000, '2022-01-15',1),
+    (NULL, 'Jane Smith', 'Project Manager', 65000, '2021-02-01',2),
+    (NULL, 'Dudu', 'Software Engineer', 9, '1000-03-10',1);
+SELECT * FROM employees_2;
+
+DELETE FROM employees_2 WHERE hired_date < '2021-03-01';
+SELECT * FROM employees_2;
+
+-- FUNTION AGGREGATION
+-- Calculate the average salary of all employees.
+SELECT AVG(salary) FROM employees_2;
+-- Find the total number of employees in a specific position (e.g., 'Pediatre').
+SELECT COUNT(*) as ped_num FROM employees_2 WHERE position='Pediatre';
+
+-- Combining Aggregate Functions with Filtering:
+-- 1) Find the highest salary within a specific epartment
+SELECT MAX(salary) as maximum_sal FROM employees_2 WHERE department_id=3;
+-- 2) Count the number of employees hired each year
+SELECT * FROM employees_2;
+INSERT INTO employees_2
+VALUES
+    (NULL, 'Jane Smith', 'Project Manager', 65000, '2021-02-01',2),
+    (NULL, 'Dudu', 'Software Engineer', 9, '1000-03-10',1);
+
+SELECT * FROM employees_2;
+SELECT YEAR(hired_date) as hire_year, COUNT(*) as num_employee
+FROM employees_2
+GROUP BY YEAR(hired_date)
+ORDER BY YEAR(hired_date);
+-- 3) Count the number of employees hired in each department
+SELECT department_id, COUNT(*) AS dep_num
+FROM employees_2
+GROUP BY department_id
+ORDER BY department_id;
