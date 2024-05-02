@@ -24,7 +24,7 @@ INSERT INTO departments_2
 VALUES
 	(NULL, 'Engineering'),
     (NULL, 'Marketing'),
-    (NULL, 'Finance');
+    (NULL, 'Financee');
 
 -- Write a query to find all employees in a specific department, e.g., 'Engineering'.
 SELECT * FROM employees_2 WHERE department_id = 
